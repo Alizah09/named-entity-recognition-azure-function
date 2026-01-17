@@ -1,3 +1,4 @@
+---
 # 🧠 Named Entity Recognition (NER) Microservice on Azure
 
 A serverless **Named Entity Recognition (NER) microservice** built using **Python, spaCy, Azure Functions, and Azure Blob Storage**.  
@@ -8,10 +9,10 @@ This service exposes an HTTP API that extracts named entities from input text an
 ## 🚀 Features
 
 - Named Entity Recognition using **spaCy**
-- REST API powered by **Azure Functions (HTTP Trigger)**
-- Automatic logging to **Azure Blob Storage**
-- Secure, private storage container
-- Production-style cloud architecture
+- REST API using **Azure Functions (HTTP Trigger)**
+- Automatic JSON logging to **Azure Blob Storage**
+- Private blob container (enterprise-style security)
+- Cloud-ready, scalable microservice
 
 ---
 
@@ -26,15 +27,20 @@ This service exposes an HTTP API that extracts named entities from input text an
 
 ## 🔗 API Endpoint
 
-### **POST** `/api/ner_http`
+**POST** `/api/ner_http`
 
-### 📥 Request Body
+---
+
+## 📥 Request Body
+
 ```json
 {
   "text": "Satya Nadella is the CEO of Microsoft in Seattle"
 }
-📤 Response
-json
+```
+---
+## 📤 Response
+```
 {
   "entities": [
     {
@@ -57,16 +63,22 @@ json
     }
   ]
 }
-☁️ Blob Storage Logging
-Each request is stored as a JSON file in Azure Blob Storage.
+```
+---
+
+## ☁️ Blob Storage Logging
+
+Each API request is stored as a JSON file in Azure Blob Storage.
 
 Container Name: ner-logs
+
 File Naming Convention:
-pgsql
 ner_YYYYMMDD_HHMMSS.json
 
-📄 Example Stored Log
-json
+---
+
+## 📄 Example Stored Log
+```
 {
   "input_text": "Satya Nadella is the CEO of Microsoft in Seattle.",
   "entities": [
@@ -91,10 +103,12 @@ json
   ],
   "timestamp": "2026-01-17T12:22:09.173432"
 }
-🔒 Note: The Blob container is private by design to follow enterprise security standards.
+```
+- 🔒 Note: The Blob container is private by design to follow enterprise security standards.
+---
 
-📁 Project Structure
-pgsql
+## 📁 Project Structure
+```
 ner-project/
 │
 ├── ner_function/
@@ -105,10 +119,14 @@ ner-project/
 │   └── venv/
 │
 └── README.md
-⚙️ Environment Configuration
-Create local.settings.json (not committed to GitHub):
+```
+---
 
-json
+## ⚙️ Environment Configuration
+
+Create local.settings.json (do not commit this to GitHub):
+
+```
 {
   "IsEncrypted": false,
   "Values": {
@@ -117,23 +135,37 @@ json
     "BLOB_CONNECTION_STRING": "<your-storage-connection-string>"
   }
 }
-▶️ Run Locally
-# Activate virtual environment
+```
+---
+
+## ▶️ Run Locally
+
+- Activate virtual environment
+```
 venv\Scripts\activate
-
-# Start Azure Functions
+```
+- Start Azure Functions
+```
 func start
-Local endpoint:
-http://localhost:7071/api/ner_http
+```
+- Local endpoint:
+```
+Local endpoint: http://localhost:7071/api/ner_http
+```
+---
 
-☁️ Deployment
+## ☁️ Deployment
+
 Azure Functions (Python runtime)
 
 Azure Blob Storage (Central India)
 
 Azure for Students subscription
 
-🧠 Design Decisions
+---
+
+## 🧠 Design Decisions
+
 Serverless architecture for scalability
 
 Secure Blob Storage with private access
@@ -142,7 +174,10 @@ Environment variables for secrets
 
 Structured JSON logging for observability
 
-👨‍💻 Author
-Amajad Ali
-Aspiring AI / ML Engineer
-Azure • NLP • Cloud Microservices
+---
+
+## 👨‍💻 Author
+
+- Amajad Ali
+- Aspiring AI / ML Engineer
+- Azure • NLP • Cloud Microservices
