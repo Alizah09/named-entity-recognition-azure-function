@@ -110,16 +110,24 @@ ner_YYYYMMDD_HHMMSS.json
 
 ## 📁 Project Structure
 ```
-ner-project/
+named-entity-recognition-azure-function/
 │
 ├── ner_function/
-│   ├── function_app.py
-│   ├── host.json
-│   ├── local.settings.json
-│   ├── requirements.txt
-│   └── venv/
+│   ├── function_app.py          # Azure Function HTTP trigger with spaCy NER logic
+│   ├── host.json                # Azure Functions host configuration
+│   ├── local.settings.json      # Local environment variables (not committed)
+│   ├── requirements.txt         # Python dependencies
+│   └── venv/                    # Python virtual environment (local use)
 │
-└── README.md
+├── screenshot/
+│   ├── screenshots_function_running_locally.png    # Postman request & NER API response
+│   ├── screenshots_api_request_response.png        # Azure Functions running locally (func start)
+│   ├── screenshots_ner_output.png                  # Azure Blob Storage container (ner-logs)
+│   ├── screenshots_blob_container.png              # Stored JSON log with entities & timestamp
+│   └── github_repository.png                       # GitHub repository & README view
+│
+└── README.md                     # Project documentation
+
 ```
 ---
 
