@@ -35,7 +35,6 @@ This service exposes an HTTP API that extracts named entities from input text an
 }
 📤 Response
 json
-Copy code
 {
   "entities": [
     {
@@ -62,15 +61,12 @@ Copy code
 Each request is stored as a JSON file in Azure Blob Storage.
 
 Container Name: ner-logs
-
 File Naming Convention:
-
 pgsql
-Copy code
 ner_YYYYMMDD_HHMMSS.json
+
 📄 Example Stored Log
 json
-Copy code
 {
   "input_text": "Satya Nadella is the CEO of Microsoft in Seattle.",
   "entities": [
@@ -99,7 +95,6 @@ Copy code
 
 📁 Project Structure
 pgsql
-Copy code
 ner-project/
 │
 ├── ner_function/
@@ -114,7 +109,6 @@ ner-project/
 Create local.settings.json (not committed to GitHub):
 
 json
-Copy code
 {
   "IsEncrypted": false,
   "Values": {
@@ -124,18 +118,14 @@ Copy code
   }
 }
 ▶️ Run Locally
-bash
-Copy code
 # Activate virtual environment
 venv\Scripts\activate
 
 # Start Azure Functions
 func start
 Local endpoint:
-
-bash
-Copy code
 http://localhost:7071/api/ner_http
+
 ☁️ Deployment
 Azure Functions (Python runtime)
 
