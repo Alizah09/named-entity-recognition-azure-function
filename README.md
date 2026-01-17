@@ -1,48 +1,41 @@
-🧠 Named Entity Recognition (NER) Microservice on Azure
+# 🧠 Named Entity Recognition (NER) Microservice on Azure
 
-A production-style Named Entity Recognition (NER) microservice built using Python, spaCy, Azure Functions, and Azure Blob Storage.
-This service exposes an HTTP API that extracts named entities from text and securely stores inference logs in Azure Blob Storage.
+A serverless **Named Entity Recognition (NER) microservice** built using **Python, spaCy, Azure Functions, and Azure Blob Storage**.  
+This service exposes an HTTP API that extracts named entities from input text and securely logs results to Azure Blob Storage.
 
-🚀 Features
+---
 
-🔍 Named Entity Recognition using spaCy
+## 🚀 Features
 
-🌐 REST API built with Azure Functions (HTTP Trigger)
+- Named Entity Recognition using **spaCy**
+- REST API powered by **Azure Functions (HTTP Trigger)**
+- Automatic logging to **Azure Blob Storage**
+- Secure, private storage container
+- Production-style cloud architecture
 
-☁️ Secure logging to Azure Blob Storage
+---
 
-🔐 Private storage access (enterprise security best practices)
+## 🛠️ Tech Stack
 
-📦 Clean, modular, cloud-ready architecture
+- **Language:** Python 3.10  
+- **NLP Library:** spaCy  
+- **Compute:** Azure Functions  
+- **Storage:** Azure Blob Storage  
 
-🛠️ Tech Stack
-Component	Technology
-Language	Python 3.10
-NLP Engine	spaCy
-Cloud Compute	Azure Functions
-Storage	Azure Blob Storage
-Auth	Connection strings via environment variables
-🧩 Architecture Overview
-Client (POST Request)
-        |
-        v
-Azure Function (HTTP Trigger)
-        |
-        |-- spaCy NER Processing
-        |
-        |-- JSON Output
-        |
-        v
-Azure Blob Storage (Private Container)
+---
 
-📌 API Endpoint
-POST /api/ner_http
-Request Body
+## 🔗 API Endpoint
+
+### **POST** `/api/ner_http`
+
+### 📥 Request Body
+```json
 {
   "text": "Satya Nadella is the CEO of Microsoft in Seattle"
 }
-
-Response
+📤 Response
+json
+Copy code
 {
   "entities": [
     {
@@ -65,18 +58,19 @@ Response
     }
   ]
 }
+☁️ Blob Storage Logging
+Each request is stored as a JSON file in Azure Blob Storage.
 
-🗂️ Blob Storage Logging
+Container Name: ner-logs
 
-Each request is logged as a JSON file in Azure Blob Storage:
+File Naming Convention:
 
-Container: ner-logs
-
-File format:
-
+pgsql
+Copy code
 ner_YYYYMMDD_HHMMSS.json
-
-Example Stored Log
+📄 Example Stored Log
+json
+Copy code
 {
   "input_text": "Satya Nadella is the CEO of Microsoft in Seattle.",
   "entities": [
@@ -101,11 +95,11 @@ Example Stored Log
   ],
   "timestamp": "2026-01-17T12:22:09.173432"
 }
-
-
-🔒 The container is private by design to follow enterprise security standards.
+🔒 Note: The Blob container is private by design to follow enterprise security standards.
 
 📁 Project Structure
+pgsql
+Copy code
 ner-project/
 │
 ├── ner_function/
@@ -116,11 +110,11 @@ ner-project/
 │   └── venv/
 │
 └── README.md
+⚙️ Environment Configuration
+Create local.settings.json (not committed to GitHub):
 
-⚙️ Environment Variables
-
-Set inside local.settings.json (not committed to Git):
-
+json
+Copy code
 {
   "IsEncrypted": false,
   "Values": {
@@ -129,57 +123,36 @@ Set inside local.settings.json (not committed to Git):
     "BLOB_CONNECTION_STRING": "<your-storage-connection-string>"
   }
 }
-
 ▶️ Run Locally
+bash
+Copy code
 # Activate virtual environment
 venv\Scripts\activate
 
-# Start Azure Function
+# Start Azure Functions
 func start
+Local endpoint:
 
-
-Access API:
-
+bash
+Copy code
 http://localhost:7071/api/ner_http
-
 ☁️ Deployment
-
-Azure Functions
+Azure Functions (Python runtime)
 
 Azure Blob Storage (Central India)
 
 Azure for Students subscription
 
 🧠 Design Decisions
+Serverless architecture for scalability
 
-Private Blob container to ensure data security
+Secure Blob Storage with private access
 
 Environment variables for secrets
 
-Stateless HTTP API for scalability
+Structured JSON logging for observability
 
-Structured logging for observability
-
-📌 Recruiter Notes
-
-This project demonstrates real-world cloud architecture
-
-Storage access is intentionally restricted
-
-Evaluation is done via:
-
-API behavior
-
-Code quality
-
-Architecture decisions
-
-Sample outputs
-
-Temporary access (SAS) can be provided if required.
-
-🙌 Author
-
+👨‍💻 Author
 Amajad Ali
 Aspiring AI / ML Engineer
 Azure • NLP • Cloud Microservices
