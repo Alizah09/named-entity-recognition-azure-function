@@ -3,6 +3,7 @@
 
 A serverless **Named Entity Recognition (NER) microservice** built using **Python, spaCy, Azure Functions, and Azure Blob Storage**.  
 This service exposes an HTTP API that extracts named entities from input text and securely logs results to Azure Blob Storage.
+I developed and locally tested an Azure Function with spaCy, validated responses via Postman, and verified logs in Azure Blob Storage.
 
 ---
 
